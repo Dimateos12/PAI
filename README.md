@@ -10,13 +10,13 @@ This project focuses on creating an advanced web application that combines advan
 - **Backend:**
   - Programming Language: C# (latest standards preferred)
   - Framework: ASP.NET Core
-  - Architecture: Advanced Object-Oriented Programming, Generic Repository Pattern
-  - Database: (Specify your chosen database, e.g., Entity Framework)
+  - Architecture:  Generic Repository Pattern
+  - Database: (PostgreSQL, Entity Framework)
 
 - **Frontend:**
   - Library: React.js
   - State Management: Redux (optional)
-  - Styling: (e.g., Styled Components, CSS Modules)
+  - Styling: (Styled Components, CSS Modules)
 
 ## Features
 
@@ -27,7 +27,7 @@ This project focuses on creating an advanced web application that combines advan
   - Utilize React to create a responsive and aesthetically pleasing user interface.
 
 - **Authentication and Authorization:**
-  - Implement authentication and authorization mechanisms, e.g., using JWT.
+  - Implement authentication and authorization mechanisms using JWT.
 
 - **API Communication:**
   - Use RESTful API for communication between the frontend and backend.
@@ -50,7 +50,6 @@ This project focuses on creating an advanced web application that combines advan
 
 - Node.js
 - .NET SDK
-- (Add other required dependencies)
 
 ## Running Instructions
 
@@ -64,8 +63,6 @@ This project focuses on creating an advanced web application that combines advan
 
 ## Author
 
-[Your Name]
+Mateusz Jabłoński
 
 ---
-
-Thank you for your interest in our project! If you have any questions or suggestions, feel free to contact us at [email address].
