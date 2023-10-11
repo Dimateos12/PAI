@@ -2,6 +2,8 @@
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using PAI.Data.Models;
+using PAI.Data;
 
 namespace PAI.Repository.Implementations
 {
