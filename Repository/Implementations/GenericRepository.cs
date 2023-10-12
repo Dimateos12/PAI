@@ -2,7 +2,8 @@
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-
+using PAI.Data;
+using PAI.Data.Models;
 namespace PAI.Repository.Implementations
 {
     public class GenericRepository<T, TKey> : IGenericRepository<T, TKey> where T : class

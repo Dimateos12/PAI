@@ -1,3 +1,6 @@
+using PAI.Repository.Implementations;
+using PAI.Repository.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +18,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+builder.Services.AddHttpContextAccessor();
+
+#region RepositoryInjection
+builder.Services.AddTransient(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
+#endregion
 
 app.UseHttpsRedirection();
 
