@@ -1,6 +1,6 @@
 ﻿using PAI.Repository.Interfaces;
 using PAI.Services.Interfaces;
-
+using PAI.Common.ModelsDTO;
 namespace PAI.Services.Implementations;
 
 public abstract class GenericService<TEntity, TKey, TViewEntity, TViewKey> : IGenericService<TEntity, TKey, TViewEntity, TViewKey>
