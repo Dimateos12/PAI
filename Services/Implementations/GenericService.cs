@@ -1,4 +1,5 @@
-﻿using PAI.Repository.Interfaces;
+﻿using AutoMapper;
+using PAI.Repository.Interfaces;
 using PAI.Services.Interfaces;
 using PAI.Common.ModelsDTO;
 namespace PAI.Services.Implementations;
@@ -10,14 +11,16 @@ public abstract class GenericService<TEntity, TKey, TViewEntity, TViewKey> : IGe
 
     private readonly IGenericRepository<TEntity, TKey> _repository;
     private readonly IGenericRepository<TViewEntity, TViewKey> _repositoryView;
-    
+    private readonly IMapper _mapper;
 
     public GenericService(IGenericRepository<TEntity, TKey> repository,
-        IGenericRepository<TViewEntity, TViewKey> repositoryView
+        IGenericRepository<TViewEntity, TViewKey> repositoryView,
+        IMapper mapper
     )
     {
         _repository = repository;
         _repositoryView = repositoryView;
+        _mapper = mapper;
     }
 
     public async Task<ResponseDTO<TDTO>> Add<TDTO>(TDTO model)
