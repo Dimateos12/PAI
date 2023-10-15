@@ -4,6 +4,9 @@ using PAI.Common.ModelsDTO;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Google.Apis.Auth;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using PAI.Data.Models;
 
@@ -15,6 +18,7 @@ public class AuthenticationController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly IConfiguration _configuration;
+
 
     public AuthenticationController(
 
@@ -124,7 +128,7 @@ public class AuthenticationController : ControllerBase
 
         });
     }
-    
+   
     private string GenerateJwtToken(IdentityUser user)
     {
         var jwtTokenHandler = new JwtSecurityTokenHandler();
@@ -151,7 +155,5 @@ public class AuthenticationController : ControllerBase
 
         return jwtToken;
     }
-
-    
     
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -54,6 +55,10 @@ builder.Services.AddAuthentication(options =>
         RequireExpirationTime = false,
         ValidateLifetime = true
     };
+}).AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId =  builder.Configuration["Authentication:Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
 
 builder.Services.AddIdentityCore<IdentityUser>(options =>
@@ -81,7 +86,7 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.MapControllers();
 
 app.Run();
