@@ -44,7 +44,6 @@ This project focuses on creating an advanced web application that combines advan
 - **Frontend:**
   - `src/`: React source code
   - `public/`: Static resources
-  - `redux/`: Redux configuration and reducers (optional)
 
 ## Requirements
 
