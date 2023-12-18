@@ -9,9 +9,12 @@ using PAI.Data.Models;
 
 namespace PAI.Data
 {
-    public class PAIDbContext: IdentityDbContext
+    public class PAIDbContext : IdentityDbContext
     {
-        public virtual DbSet<TESTCONNECTION> Connections { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Image> Images { get; set; }
         public PAIDbContext(DbContextOptions<PAIDbContext> options) : base(options)
         {
             
