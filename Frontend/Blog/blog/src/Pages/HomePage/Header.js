@@ -9,7 +9,8 @@ import Link from '@mui/material/Link';
 
 function Header(props) {
     const { sections, title } = props;
-
+    const localStorageToken = (localStorage.getItem("token") !== null);
+    
     return (
         <React.Fragment>
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -24,14 +25,15 @@ function Header(props) {
                 >
                     {title}
                 </Typography>
+                {localStorageToken ?
+                        <Button variant="outlined" size="small">Log out</Button>
+                    :
+                    <>
+                    <Button href="/signup" variant="outlined" size="small"> Sign up </Button>
+                    <Button href="/signin" variant="outlined" size="small"> Sign in </Button>
+                    </>
+                }
                 
-                <Button variant="outlined" size="small">
-                    Sign up
-                </Button>
-                
-                <Button variant="outlined" size="small">
-                    Sign in
-                </Button>
                 
             </Toolbar>
             <Toolbar
