@@ -8,6 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using PAI.Services.Implementations;
+using PAI.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +70,11 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 #region RepositoryInjection
 builder.Services.AddTransient(typeof(IGenericRepository<,>),typeof(GenericRepository<,>));
+#endregion
+
+#region ServiceInjection
+
+builder.Services.AddTransient<ISectionService, SectionService>();
 #endregion
 
 var app = builder.Build();

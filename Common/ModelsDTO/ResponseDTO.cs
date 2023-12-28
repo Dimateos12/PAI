@@ -9,7 +9,7 @@ public class ResponseDTO<T>
     public string Message { get; set; } = "The procedure was successful ";
     public ErrorEnum ErrorCode { get; set; }
 
-    public T? data;
+    public T? data { get; set; }
     public ResponseDTO(){}
 
     public ResponseDTO(ErrorEnum error)

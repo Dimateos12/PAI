@@ -9,4 +9,5 @@ public class Post
     public CategoryEnum Category { get; set; }
     public bool IsActive { get; set; }
     public int UserId { get; set; } 
+    public bool IsFeatured { get; set; } 
 }

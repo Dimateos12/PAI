@@ -6,6 +6,6 @@ namespace PAI.Services.Interfaces
         where TViewEntity : class
     {
         Task<ResponseDTO<TDTO>> Add<TDTO>(TDTO model);
-
+        Task<ResponseDTO<List<TEntity>>> GetList();
     }
 }

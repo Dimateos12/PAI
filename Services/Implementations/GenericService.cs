@@ -35,5 +35,15 @@ public abstract class GenericService<TEntity, TKey, TViewEntity, TViewKey> : IGe
 
         };
     }
+    public async Task<ResponseDTO<List<TEntity>>> GetList()
+    {
+        var list =  _repository.GetAll().ToList();
+
+        return new ResponseDTO<List<TEntity>>
+        {
+            data = list
+        };
+    }
+    
 
 }

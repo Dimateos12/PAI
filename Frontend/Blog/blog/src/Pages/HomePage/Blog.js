@@ -12,6 +12,11 @@ import Sidebar from './Sidebar';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import {useEffect, useState} from "react";
+import {GetSection} from "../../setup/axios/providers";
+import {LOCAL_STORAGE} from "../../utils/consts";
+
+
 
 const sections = [
     { title: 'Technology', url: '#' },
@@ -83,9 +88,21 @@ const sidebar = {
 
 
 export default function Blog() {
+    const [section,setSection] = useState([]);
+    
+    useEffect(() => {
+        GetSection().then(sectionData => {
+            console.log(sectionData);
+            setSection(sectionData.data)
+        }).catch(error => {
+            
+            console.error('Error in GetSection:', error);
+        });
+    }, []);
+
     return (
             <Container maxWidth="lg">
-                <Header title="Forum Dyskusyjne" sections={sections} />
+                <Header title="Forum Dyskusyjne" sections={section} />
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
                     <Grid container spacing={4}>

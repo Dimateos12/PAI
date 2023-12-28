@@ -26,7 +26,8 @@ function Header(props) {
                     {title}
                 </Typography>
                 {localStorageToken ?
-                        <Button variant="outlined" size="small">Log out</Button>
+                        <Button variant="outlined" onClick={()=>{localStorage.removeItem('token'); 
+                            window.location.reload();}} size="small">Log out</Button>
                     :
                     <>
                     <Button href="/signup" variant="outlined" size="small"> Sign up </Button>
