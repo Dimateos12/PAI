@@ -5,7 +5,7 @@ using PAI.Services.Interfaces;
 
 namespace PAI.Services.Implementations;
 
-public class CommentService : GenericService<Comment,int,Comment,int>
+public class CommentService : GenericService<Comment,int,Comment,int>, ICommentService
 {
     private readonly IGenericRepository<Comment, int> _commentRepository;
     private readonly IMapper _mapper;

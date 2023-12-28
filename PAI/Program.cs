@@ -75,6 +75,8 @@ builder.Services.AddTransient(typeof(IGenericRepository<,>),typeof(GenericReposi
 #region ServiceInjection
 
 builder.Services.AddTransient<ISectionService, SectionService>();
+builder.Services.AddTransient<ICommentService, CommentService>();
+builder.Services.AddTransient<IPostService, PostService>();
 #endregion
 
 var app = builder.Build();
