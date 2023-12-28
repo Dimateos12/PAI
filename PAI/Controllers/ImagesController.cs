@@ -1,13 +1,15 @@
 ﻿using System.Net.Mime;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using PAI.Common.ModelsDTO;
 using PAI.Data;
 using PAI.Data.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting.Internal;
 
 namespace PAI.Controllers;
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting.Internal;
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ImagesController : ControllerBase

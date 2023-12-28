@@ -52,14 +52,10 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = false, // for dev 
-        ValidateAudience = true,
+        ValidateAudience = false,
         RequireExpirationTime = false,
         ValidateLifetime = true
     };
-}).AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId =  builder.Configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
 
 builder.Services.AddIdentityCore<IdentityUser>(options =>
@@ -92,8 +88,8 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 app.UseCors("myPolicy");
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
