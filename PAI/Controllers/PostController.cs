@@ -28,4 +28,12 @@ public class PostController
     {
         return await _postService.GetList();
     }
+    
+    [HttpGet]
+    [Route("featured")]
+    public async Task<Post?> GetFeatured()
+    {
+        return await _postService.GetFeatured();
+    }
+    
 }

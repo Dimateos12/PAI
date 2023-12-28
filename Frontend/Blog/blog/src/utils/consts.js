@@ -7,6 +7,7 @@ export const ENDPOINTS = {
    login: "Authentication/Login", 
    register: "Authentication/Register",
    section: "Section",
+   GetFeaturedPost: "Post/featured",
 };
 
 export const PATHS = {

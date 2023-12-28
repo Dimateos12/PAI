@@ -13,23 +13,12 @@ import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import {useEffect, useState} from "react";
-import {GetSection} from "../../setup/axios/providers";
+import {GetFeaturedPost, GetSection} from "../../setup/axios/providers";
 import {LOCAL_STORAGE} from "../../utils/consts";
 
 
 
-const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Design', url: '#' },
-    { title: 'Culture', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Health', url: '#' },
-    { title: 'Style', url: '#' },
-    { title: 'Travel', url: '#' },
-];
+
 
 const mainFeaturedPost = {
     title: 'Title of a longer featured blog post',
@@ -49,14 +38,7 @@ const featuredPosts = [
         image: 'https://source.unsplash.com/random?wallpapers',
         imageLabel: 'Image Text',
     },
-    {
-        title: 'Post title',
-        date: 'Nov 11',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: 'https://source.unsplash.com/random?wallpapers',
-        imageLabel: 'Image Text',
-    },
+    
 ];
 
 const posts = [post1, post2, post3];
@@ -88,39 +70,52 @@ const sidebar = {
 
 
 export default function Blog() {
-    const [section,setSection] = useState([]);
-    
+    const [section, setSection] = useState([]);
+    const [featuredPost, setFeaturedPost] = useState([]);
+
     useEffect(() => {
-        GetSection().then(sectionData => {
-            console.log(sectionData);
-            setSection(sectionData.data)
-        }).catch(error => {
-            
-            console.error('Error in GetSection:', error);
-        });
+        // Fetch section data
+        GetSection()
+            .then((sectionData) => {
+                console.log(sectionData);
+                setSection(sectionData.data);
+            })
+            .catch((error) => {
+                console.error('Error in GetSection:', error);
+            });
+
+        // Fetch featured post data
+        GetFeaturedPost()
+            .then((data) => {
+                console.log(data);
+                setFeaturedPost(data.data);
+            })
+            .catch((error) => {
+                console.error('Error in GetFeatured:', error);
+            });
     }, []);
 
     return (
-            <Container maxWidth="lg">
-                <Header title="Forum Dyskusyjne" sections={section} />
-                <main>
-                    <MainFeaturedPost post={mainFeaturedPost} />
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} />
-                        ))}
-                    </Grid>
-                    <Grid container spacing={5} sx={{ mt: 3 }}>
-                        <Main title="From the firehose" posts={posts} />
-                        <Sidebar
-                            title={sidebar.title}
-                            description={sidebar.description}
-                            archives={sidebar.archives}
-                            social={sidebar.social}
-                        />
-                    </Grid>
-                </main>
-            </Container>
-         
+        <Container maxWidth="lg">
+            <Header title="Forum Dyskusyjne" sections={section} />
+            <main>
+                <MainFeaturedPost post={featuredPost[0]} />
+                <Grid container spacing={4}>
+                    {featuredPosts.slice(1).map((post) => (
+                        <FeaturedPost key={post.title} post={post} />
+                    ))}
+                </Grid>
+                <Grid container spacing={5} sx={{ mt: 3 }}>
+                    {/* Placeholder values, replace them with your actual data */}
+                    <Main title="From the firehose" posts={[]} />
+                    <Sidebar
+                        title="Sidebar Title"
+                        description="Sidebar Description"
+                        archives={[]}
+                        social={[]}
+                    />
+                </Grid>
+            </main>
+        </Container>
     );
 }

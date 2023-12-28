@@ -322,11 +322,35 @@ namespace PAI.Data.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("Data utworzenia wpisu");
+
+                    b.Property<int?>("CreatedUserId")
+                        .HasColumnType("integer")
+                        .HasComment("Identyfikator użytkownika tworzącego wpis");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("Data ostatniej aktualizacji wpisu");
+
+                    b.Property<int?>("UpdatedUserId")
+                        .HasColumnType("integer")
+                        .HasComment("Identyfikator użytkownika aktualizującego wpis");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");

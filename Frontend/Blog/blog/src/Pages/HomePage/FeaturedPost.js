@@ -31,8 +31,8 @@ function FeaturedPost(props) {
                     <CardMedia
                         component="img"
                         sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                        image={post.image}
-                        alt={post.imageLabel}
+                        // image={post.image? post.image : "https://source.unsplash.com/random?wallpapers"}
+                        // alt={post.imageLabel? "zdjecie" : "zdjecie"}
                     />
                 </Card>
             </CardActionArea>

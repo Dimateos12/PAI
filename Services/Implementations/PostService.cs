@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PAI.Common.ModelsDTO;
 using PAI.Data.Models;
 using PAI.Repository.Interfaces;
 using PAI.Services.Interfaces;
@@ -14,5 +16,10 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
     {
         _postRepository = repository;
         _mapper = mapper;
+    }
+
+    public async Task<Post?> GetFeatured()
+    {
+        return await _postRepository.Find(x => x.IsFeatured == true).FirstOrDefaultAsync();
     }
 }

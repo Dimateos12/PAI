@@ -31,3 +31,12 @@ export function GetSection() {
             throw error; 
         });
 }
+
+export function GetFeaturedPost() {
+    return axiosAuth.get(ENDPOINTS.GetFeaturedPost)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error fetching section:', error);
+            throw error;
+        });
+}
