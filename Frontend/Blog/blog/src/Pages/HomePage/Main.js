@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Markdown from './Markdown';
+import FeaturedPost from "./FeaturedPost";
 
 function Main(props) {
     const { posts, title } = props;
@@ -19,14 +20,12 @@ function Main(props) {
                 },
             }}
         >
-            <Typography variant="h6" gutterBottom>
-                {title}
-            </Typography>
-            <Divider />
-            {posts.map((post) => (
-                <Markdown className="markdown" key={post.substring(0, 40)}>
-                    {post}
-                </Markdown>
+            <Typography variant="h6">{title}</Typography>
+            {posts.slice(0, 3).map((post) => (
+                <div style={{marginBottom: '5%', width: '180%'}}>
+                    <FeaturedPost key={post.id} post={post}/>
+                </div>
+
             ))}
         </Grid>
     );

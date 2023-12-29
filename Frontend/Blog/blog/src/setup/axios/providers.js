@@ -40,3 +40,11 @@ export function GetFeaturedPost() {
             throw error;
         });
 }
+    export function GetAllPosts() {
+        return axiosAuth.get(ENDPOINTS.GetPosts)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }

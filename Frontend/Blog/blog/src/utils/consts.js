@@ -8,6 +8,7 @@ export const ENDPOINTS = {
    register: "Authentication/Register",
    section: "Section",
    GetFeaturedPost: "Post/featured",
+    GetPosts: "Post"
 };
 
 export const PATHS = {

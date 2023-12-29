@@ -9,30 +9,30 @@ import CardMedia from '@mui/material/CardMedia';
 
 function FeaturedPost(props) {
     const { post } = props;
-
     return (
         <Grid item xs={12} md={6}>
             <CardActionArea component="a" href="#">
-                <Card sx={{ display: 'flex' }}>
+                <Card key={post.id} 
+                      sx={{ display: 'flex',  backgroundColor:  '#E7E4E3 '  }}>
                     <CardContent sx={{ flex: 1 }}>
                         <Typography component="h2" variant="h5">
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary">
-                            {post.date}
+                         ....
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
                             {post.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
-                            Continue reading...
+                            Czytaj...
                         </Typography>
                     </CardContent>
                     <CardMedia
                         component="img"
                         sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                        // image={post.image? post.image : "https://source.unsplash.com/random?wallpapers"}
-                        // alt={post.imageLabel? "zdjecie" : "zdjecie"}
+                        image={ "https://source.unsplash.com/random?wallpapers"} // post.image? post.image :
+                        alt={post.imageLabel? "zdjecie" : "zdjecie"}
                     />
                 </Card>
             </CardActionArea>

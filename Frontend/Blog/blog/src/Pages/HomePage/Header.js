@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import Avatar from '@mui/material/Avatar';
 
 function Header(props) {
     const { sections, title } = props;
@@ -25,6 +26,8 @@ function Header(props) {
                 >
                     {title}
                 </Typography>
+                <Avatar sx={{ bgcolor: '#F66737', marginRight: '1%', marginLeft: '-10%' }}>MJ</Avatar>
+                <Typography sx={{marginRight: '3%'}} variant='h8'>Witaj Mateusz</Typography>
                 {localStorageToken ?
                         <Button variant="outlined" onClick={()=>{localStorage.removeItem('token'); 
                             window.location.reload();}} size="small">Log out</Button>

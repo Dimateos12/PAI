@@ -13,8 +13,9 @@ import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import {useEffect, useState} from "react";
-import {GetFeaturedPost, GetSection} from "../../setup/axios/providers";
+import {GetAllPosts, GetFeaturedPost, GetSection} from "../../setup/axios/providers";
 import {LOCAL_STORAGE} from "../../utils/consts";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -31,10 +32,10 @@ const mainFeaturedPost = {
 
 const featuredPosts = [
     {
-        title: 'Featured post',
+        title: 'Witamy na forum dyskusyjnym',
         date: 'Nov 12',
         description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
+            'Fajne forum ktore  fajnie sie czyta i mozna pododawać wpisy',
         image: 'https://source.unsplash.com/random?wallpapers',
         imageLabel: 'Image Text',
     },
@@ -67,12 +68,14 @@ const sidebar = {
     ],
 };
 
+const posts1 = ['Post 1 content', 'Post 2 content', 'Post 3 content'];
 
 
 export default function Blog() {
     const [section, setSection] = useState([]);
     const [featuredPost, setFeaturedPost] = useState([]);
-
+    const [allPost, setAllPost] = useState([]);
+    
     useEffect(() => {
         // Fetch section data
         GetSection()
@@ -87,8 +90,16 @@ export default function Blog() {
         // Fetch featured post data
         GetFeaturedPost()
             .then((data) => {
-                console.log(data);
-                setFeaturedPost(data.data);
+                
+                setFeaturedPost(data);
+            })
+            .catch((error) => {
+                console.error('Error in GetFeatured:', error);
+            });
+
+        GetAllPosts()
+            .then((data) => {
+              setAllPost(data.data);
             })
             .catch((error) => {
                 console.error('Error in GetFeatured:', error);
@@ -99,20 +110,20 @@ export default function Blog() {
         <Container maxWidth="lg">
             <Header title="Forum Dyskusyjne" sections={section} />
             <main>
-                <MainFeaturedPost post={featuredPost[0]} />
+                <MainFeaturedPost post={featuredPosts[0]} />
+                <Typography variant="h6">Najnowszy post </Typography>
                 <Grid container spacing={4}>
-                    {featuredPosts.slice(1).map((post) => (
-                        <FeaturedPost key={post.title} post={post} />
-                    ))}
+                    <FeaturedPost key={featuredPost.title} post={featuredPost} />
                 </Grid>
-                <Grid container spacing={5} sx={{ mt: 3 }}>
+                <Grid container spacing={1} sx={{ mt: 1 }}>
                     {/* Placeholder values, replace them with your actual data */}
-                    <Main title="From the firehose" posts={[]} />
+                   
+                    <Main title="Ostatnie posty" posts={allPost} />
                     <Sidebar
-                        title="Sidebar Title"
-                        description="Sidebar Description"
-                        archives={[]}
-                        social={[]}
+                        title={sidebar.title}
+                        description={sidebar.description}
+                        archives={sidebar.archives}
+                        social={sidebar.social}
                     />
                 </Grid>
             </main>
