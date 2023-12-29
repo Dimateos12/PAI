@@ -4,6 +4,7 @@ import SignInSide from "./Pages/SignInSide/SignInSide";
 import SignUp from "./Pages/SignUp/SignUp";
 import Blog from "./Pages/HomePage/Blog";
 import SharedLayout from "./Routing/SharedLayout";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
     
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
                   <Route path="/signup" element={<SignUp/>} />
                   <Route element={<SharedLayout />}>
                   <Route path="/" element={<Blog/>} />
+                  <Route path="/profile" element={<ProfilePage/>} />
+                      
                   </Route>
                </Routes>
                
