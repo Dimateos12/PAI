@@ -9,9 +9,6 @@ import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import post1 from './blog-post.1.md';
-import post2 from './blog-post.2.md';
-import post3 from './blog-post.3.md';
 import {useEffect, useState} from "react";
 import {GetAllPosts, GetFeaturedPost, GetSection} from "../../setup/axios/providers";
 import {LOCAL_STORAGE} from "../../utils/consts";
@@ -42,12 +39,11 @@ const featuredPosts = [
     
 ];
 
-const posts = [post1, post2, post3];
 
 const sidebar = {
     title: 'About',
     description:
-        'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+        'Fajne forum JBC ELEKTRODE starych dziadów z internetem.',
     archives: [
         { title: 'March 2020', url: '#' },
         { title: 'February 2020', url: '#' },
@@ -108,23 +104,25 @@ export default function Blog() {
 
     return (
         <Container maxWidth="lg">
-            <Header title="Forum Dyskusyjne" sections={section} />
             <main>
                 <MainFeaturedPost post={featuredPosts[0]} />
                 <Typography variant="h6">Najnowszy post </Typography>
                 <Grid container spacing={4}>
+                    
                     <FeaturedPost key={featuredPost.title} post={featuredPost} />
                 </Grid>
                 <Grid container spacing={1} sx={{ mt: 1 }}>
                     {/* Placeholder values, replace them with your actual data */}
                    
                     <Main title="Ostatnie posty" posts={allPost} />
-                    <Sidebar
-                        title={sidebar.title}
-                        description={sidebar.description}
-                        archives={sidebar.archives}
-                        social={sidebar.social}
-                    />
+                 
+                      <Sidebar
+                          title={sidebar.title}
+                          description={sidebar.description}
+                          archives={sidebar.archives}
+                          social={sidebar.social}
+                      />  
+                    
                 </Grid>
             </main>
         </Container>

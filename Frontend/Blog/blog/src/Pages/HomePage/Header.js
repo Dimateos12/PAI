@@ -45,7 +45,7 @@ function Header(props) {
                 variant="dense"
                 sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
             >
-                {sections.map((section) => (
+                {sections.slice(0,6).map((section) => (
                     <Link
                         color="inherit"
                         noWrap
@@ -54,7 +54,7 @@ function Header(props) {
                         href={section.url}
                         sx={{ p: 1, flexShrink: 0 }}
                     >
-                        {section.title}
+                        <Button>{section.title}</Button>
                     </Link>
                 ))}
             </Toolbar>
