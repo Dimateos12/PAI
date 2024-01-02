@@ -2,16 +2,25 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Avatar from '@mui/material/Avatar';
+import { jwtDecode } from 'jwt-decode';
+import { useEffect } from 'react';
 
 function Header(props) {
+
     const { sections, title } = props;
-    const localStorageToken = (localStorage.getItem("token") !== null);
-    
+    const localStorageToken = ( localStorage.getItem("token") !== null);
+    const [localStorageInfo,setLocalStorageInfo] = React.useState([]);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token'); 
+        setLocalStorageInfo(jwtDecode(storedToken));
+    }, []);
+
+    console.log(localStorageInfo);
+
     return (
         <React.Fragment>
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -26,8 +35,14 @@ function Header(props) {
                 >
                     {title}
                 </Typography>
-                <Avatar sx={{ bgcolor: '#F66737', marginRight: '1%', marginLeft: '-10%' }}>MJ</Avatar>
-                <Typography sx={{marginRight: '3%'}} variant='h8'> <Button href="/profile">Witaj Mateusz</Button></Typography>
+                {localStorageToken ?
+                <>
+                <Avatar sx={{ bgcolor: '#F66737', marginRight: '1%', marginLeft: '-20%' }}></Avatar>
+                <Typography sx={{marginRight: '3%'}} variant='h8'> <Button href="/profile">Witaj {localStorageInfo.given_name}</Button></Typography>
+                </>
+                :
+                <></>
+}
                 {localStorageToken ?
                         <Button variant="outlined" onClick={()=>{localStorage.removeItem('token'); 
                             window.location.reload();}} size="small">Log out</Button>

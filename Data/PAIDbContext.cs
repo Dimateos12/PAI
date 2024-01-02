@@ -9,7 +9,7 @@ using PAI.Data.Models;
 
 namespace PAI.Data
 {
-    public class PAIDbContext : IdentityDbContext
+    public class PAIDbContext : IdentityDbContext<User>
     {
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Post> Posts { get; set; }

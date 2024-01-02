@@ -16,13 +16,13 @@ namespace PAI.Controllers;
 [ApiController]
 public class AuthenticationController : ControllerBase
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<User> _userManager;
     private readonly IConfiguration _configuration;
 
 
     public AuthenticationController(
 
-        UserManager<IdentityUser> userManager,
+        UserManager<User> userManager,
         IConfiguration configuration
     )
     {
@@ -38,15 +38,18 @@ public class AuthenticationController : ControllerBase
         if (ModelState.IsValid)
         {
             var user_exist = await _userManager.FindByEmailAsync(requestDTO.Email);
-            if (user_exist != null) {
-                return BadRequest();
-            }
+            //if (user_exist != null) {
+            //    return BadRequest();
+            //}
 
             // create a user
-            var new_user = new IdentityUser()
+            var new_user = new User()
             {
                 Email = requestDTO.Email,
-                UserName = requestDTO.Email
+                UserName = requestDTO.Email,
+                FirstName= requestDTO.FirstName,
+                LastName= requestDTO.LastName
+
             };
 
             var is_created = await _userManager.CreateAsync(new_user, requestDTO.Password);
@@ -129,7 +132,7 @@ public class AuthenticationController : ControllerBase
         });
     }
    
-    private string GenerateJwtToken(IdentityUser user)
+    private string GenerateJwtToken(User user)
     {
         var jwtTokenHandler = new JwtSecurityTokenHandler();
 
@@ -143,8 +146,8 @@ public class AuthenticationController : ControllerBase
                 new Claim("Id", user.Id),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim(JwtRegisteredClaimNames.Name,user.UserName),
-                new Claim(JwtRegisteredClaimNames.Nonce,user.PhoneNumber),
+                new Claim(JwtRegisteredClaimNames.FamilyName,user.LastName),
+                new Claim(JwtRegisteredClaimNames.GivenName,user.FirstName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToUniversalTime().ToString())
             }),
