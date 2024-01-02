@@ -44,6 +44,16 @@ public abstract class GenericService<TEntity, TKey, TViewEntity, TViewKey> : IGe
             data = list
         };
     }
-    
+
+    public async Task<ResponseDTO<TDTO>> GetById<TDTO>(TKey id)
+    {
+        var obj = await _repository.GetByIdAsync(id);
+        var data = _mapper.Map<TDTO>(obj);
+        return new ResponseDTO<TDTO>
+        {
+            data = data
+        };
+    }
+
 
 }

@@ -12,6 +12,8 @@ namespace PAI.Repository.Interfaces
         IQueryable<T> GetAll();
         IQueryable<T> Find(Expression<Func<T, bool>> expression);
         Task<T> AddAsync(T entity);
+        Task<T> GetByIdAsync(TKey id);
+
 
     }
 }

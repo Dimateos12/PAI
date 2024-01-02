@@ -34,6 +34,8 @@ export default function SignUp() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const formattedData = {
+            firstName: data.get('lastName'),
+            lastName: data.get('firstName'),
             name: data.get('firstName'),
             email: data.get('email'),
             password: data.get('password'),

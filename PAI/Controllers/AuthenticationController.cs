@@ -19,11 +19,11 @@ public class AuthenticationController : ControllerBase
     private readonly UserManager<User> _userManager;
     private readonly IConfiguration _configuration;
 
-
     public AuthenticationController(
 
         UserManager<User> userManager,
         IConfiguration configuration
+        
     )
     {
         _userManager= userManager;
@@ -38,17 +38,20 @@ public class AuthenticationController : ControllerBase
         if (ModelState.IsValid)
         {
             var user_exist = await _userManager.FindByEmailAsync(requestDTO.Email);
-            //if (user_exist != null) {
-            //    return BadRequest();
-            //}
+            
+            if (user_exist != null)
+            {
+                return BadRequest();
+            }
 
             // create a user
             var new_user = new User()
             {
                 Email = requestDTO.Email,
                 UserName = requestDTO.Email,
-                FirstName= requestDTO.FirstName,
-                LastName= requestDTO.LastName
+                FirstName = requestDTO.FirstName,
+                LastName = requestDTO.LastName,
+                NormalId = _userManager.Users.Count() + 1
 
             };
 
@@ -144,7 +147,7 @@ public class AuthenticationController : ControllerBase
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim("Id", user.Id),
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.NameId, user.NormalId.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email,user.Email),
                 new Claim(JwtRegisteredClaimNames.FamilyName,user.LastName),
                 new Claim(JwtRegisteredClaimNames.GivenName,user.FirstName),

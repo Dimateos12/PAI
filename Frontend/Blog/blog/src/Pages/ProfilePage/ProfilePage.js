@@ -20,7 +20,6 @@ export default function ProfilePage() {
 
         setToken(jwtDecode(storedToken));
     }, []);
-    
     const [allPost, setAllPost] = useState([]);
     const [isLoading,setLoading] = useState(true);
 

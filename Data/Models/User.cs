@@ -11,5 +11,7 @@ namespace PAI.Data.Models
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
+        public int? NormalId { get; set; }  
+
     }
 }

@@ -15,11 +15,13 @@ function Header(props) {
     const [localStorageInfo,setLocalStorageInfo] = React.useState([]);
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token'); 
-        setLocalStorageInfo(jwtDecode(storedToken));
+        if(localStorageToken){
+            const storedToken = localStorage.getItem('token'); 
+            setLocalStorageInfo(jwtDecode(storedToken));
+        }
+       
     }, []);
 
-    console.log(localStorageInfo);
 
     return (
         <React.Fragment>
