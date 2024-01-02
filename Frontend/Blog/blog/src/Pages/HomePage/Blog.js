@@ -100,7 +100,7 @@ export default function Blog() {
                 </Grid>
                 <Grid container spacing={1} sx={{ mt: 1 }}>
                    
-                    <Main title="Ostatnie posty" posts={allPost} />
+                    <Main title="Ostatnie posty" posts={allPost} limit={3} />
                  
                       <Sidebar
                           title={sidebar.title}

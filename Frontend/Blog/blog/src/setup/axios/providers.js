@@ -48,3 +48,12 @@ export function GetFeaturedPost() {
                 throw error;
             });
     }
+
+    export function GetPostsById(id) {
+        return axiosAuth.get(ENDPOINTS.GetPostsById+id)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }

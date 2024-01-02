@@ -69,7 +69,7 @@ function Header(props) {
                         href={section.url}
                         sx={{ p: 1, flexShrink: 0 }}
                     >
-                        <Button>{section.title}</Button>
+                        <Button href={"/section/?id="+section.id}>{section.title}</Button>
                     </Link>
                 ))}
             </Toolbar>

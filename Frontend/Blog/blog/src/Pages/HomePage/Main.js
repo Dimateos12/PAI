@@ -7,7 +7,7 @@ import Markdown from './Markdown';
 import FeaturedPost from "./FeaturedPost";
 
 function Main(props) {
-    const { posts, title } = props;
+    const { posts, title, limit, postId } = props;
 
     return (
         <Grid
@@ -21,12 +21,13 @@ function Main(props) {
             }}
         >
             <Typography variant="h6">{title}</Typography>
-            {posts.slice(0, 3).map((post) => (
-                <div style={{marginBottom: '5%', width: '180%'}}>
-                    <FeaturedPost key={post.id} post={post}/>
-                </div>
-
-            ))}
+            {posts
+                .slice(0, limit)
+                .map((post) => (
+                    <div style={{ marginBottom: '5%', width: '180%' }}>
+                    <FeaturedPost key={post.id} post={post} />
+                    </div>
+             ))}
         </Grid>
     );
 }

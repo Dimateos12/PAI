@@ -22,4 +22,8 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
     {
         return await _postRepository.Find(x => x.IsFeatured == true).FirstOrDefaultAsync();
     }
+    public async Task<List<Post>> GetSectionsPost(int id)
+    {
+        return await _postRepository.Find(x => x.Category == id).ToListAsync();
+    }
 }

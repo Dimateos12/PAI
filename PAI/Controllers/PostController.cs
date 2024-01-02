@@ -35,5 +35,11 @@ public class PostController
     {
         return await _postService.GetFeatured();
     }
-    
+
+    [HttpGet]
+    [Route("{id:int}")]
+    public async Task<List<Post>> GetSectionsPost(int id)
+    {
+        return await _postService.GetSectionsPost(id);
+    }
 }
