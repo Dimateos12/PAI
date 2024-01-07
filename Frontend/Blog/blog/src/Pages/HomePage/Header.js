@@ -7,6 +7,7 @@ import Link from '@mui/material/Link';
 import Avatar from '@mui/material/Avatar';
 import { jwtDecode } from 'jwt-decode';
 import { useEffect } from 'react';
+import BreadcrumbsHeader from '../../setup/axios/BreadcrumbsHeader';
 
 function Header(props) {
 
@@ -75,6 +76,7 @@ function Header(props) {
                     </Link>
                 ))}
             </Toolbar>
+            <BreadcrumbsHeader/>
         </React.Fragment>
     );
 }
