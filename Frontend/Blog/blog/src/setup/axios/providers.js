@@ -56,4 +56,14 @@ export function GetFeaturedPost() {
                 console.error('Error fetching section:', error);
                 throw error;
             });
+
     }
+
+    export function GetPostById(id) {
+        return axiosAuth.get(ENDPOINTS.GetPostById+id)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+        }

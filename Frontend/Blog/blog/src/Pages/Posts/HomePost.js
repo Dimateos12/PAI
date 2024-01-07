@@ -2,36 +2,47 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import {useEffect, useState} from "react";
-import {GetAllPosts, GetPostsById} from "../../setup/axios/providers";
+import {GetAllPosts, GetPostById, GetPostsById} from "../../setup/axios/providers";
 import Main from '../HomePage/Main';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 
 
-export default function ListPosts() {
+export default function HomePost() {
    
+    const params = useParams();
 
-    const [allPost, setAllPost] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [post, setPost] = useState([]);
   
     useEffect(() => {
      
-        GetPostsById(searchParams.get('id'))
+        GetPostById(params.postId)
             .then((data) => {
-              setAllPost(data);
+              setPost(data);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
     }, []);
 
+    console.log(post);
+
     return (
+               <>
                 <Grid  container
                 spacing={2}
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
                 >
-                    <Main title="Lista postów" posts={allPost}/>
-                </Grid>
+               <Card >
+                <CardContent >
+                    <CardHeader title={post.title}/>
+                    <Typography color="text.secondary">Data stworznie: {post.createdDate}</Typography> 
+                    <Typography variant="body2">{post.body}</Typography> 
+                </CardContent>
+               </Card>
+               </Grid>
+               </>
     );
 }

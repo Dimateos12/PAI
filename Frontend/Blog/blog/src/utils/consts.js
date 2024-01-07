@@ -9,7 +9,8 @@ export const ENDPOINTS = {
    section: "Section",
    GetFeaturedPost: "Post/featured",
    GetPosts: "Post",
-   GetPostsById: "Post/"
+   GetPostsById: "Post/",
+   GetPostById: "Post/get/"
 };
 
 export const PATHS = {
