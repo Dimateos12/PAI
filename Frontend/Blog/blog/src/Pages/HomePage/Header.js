@@ -23,6 +23,7 @@ function Header(props) {
        
     }, []);
 
+    console.log(localStorageInfo.typ);
 
     return (
         <React.Fragment>
@@ -55,6 +56,15 @@ function Header(props) {
                     <Button href="/signin" variant="outlined" size="small"> Sign in </Button>
                     </>
                 }
+
+                {localStorageInfo.typ === "Yes" ?
+                        <Button href="/admin" variant="outlined" size="small">Admin panel</Button>
+                    :
+                    <>
+                    </>
+                }
+
+               
                 
                 
             </Toolbar>

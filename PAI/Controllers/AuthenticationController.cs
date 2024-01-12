@@ -51,7 +51,8 @@ public class AuthenticationController : ControllerBase
                 UserName = requestDTO.Email,
                 FirstName = requestDTO.FirstName,
                 LastName = requestDTO.LastName,
-                NormalId = _userManager.Users.Count() + 1
+                NormalId = _userManager.Users.Count() + 1,
+                IsAdmin = false
 
             };
 
@@ -152,7 +153,8 @@ public class AuthenticationController : ControllerBase
                 new Claim(JwtRegisteredClaimNames.FamilyName,user.LastName),
                 new Claim(JwtRegisteredClaimNames.GivenName,user.FirstName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToUniversalTime().ToString())
+                new Claim(JwtRegisteredClaimNames.Iat, DateTime.Now.ToUniversalTime().ToString()),
+                new Claim(JwtRegisteredClaimNames.Typ, user.IsAdmin? "Yes": "No")
             }),
          
             Expires = DateTime.Now.AddHours(1),

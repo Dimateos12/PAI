@@ -7,6 +7,7 @@ import SharedLayout from "./Routing/SharedLayout";
 import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import ListPosts from './Pages/Posts/ListPosts';
 import HomePost from './Pages/Posts/HomePost';
+import AdminPage from './Pages/AdminPage/AdminPage';
     
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/profile" element={<ProfilePage/>} />
                     <Route path="/section" element={<ListPosts/>} />
                     <Route path="/post/:postId" element={<HomePost/>} />
+                    <Route path='/admin' element={<AdminPage/>} />
                   </Route>
                </Routes>
                

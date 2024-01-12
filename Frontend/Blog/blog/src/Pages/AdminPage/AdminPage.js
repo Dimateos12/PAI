@@ -1,0 +1,82 @@
+import * as React from 'react';
+import {useSearchParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import { jwtDecode } from "jwt-decode";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { Button, CardHeader, Grid } from '@mui/material';
+import { GetAllComents, GetAllPosts } from '../../setup/axios/providers';
+import Main from '../HomePage/Main';
+import CommentsPost from '../Posts/CommentsPost';
+
+
+
+export default function AdminPage() {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token'); 
+
+        setToken(jwtDecode(storedToken));
+    }, []);
+    const [allPost, setAllPost] = useState([]);
+    const [isLoading,setLoading] = useState(true);
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        GetAllPosts()
+            .then((data) => {
+              setAllPost(data.data);
+              setLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error in GetFeatured:', error);
+            });
+            GetAllComents()
+            .then((data) => {
+                setComments(data.data);
+            })
+    }, []);
+
+    if(isLoading){
+        return true;
+    }
+
+    console.log(comments);
+
+    return (
+        <Card>
+            <CardHeader title="Witaj Administratorze" />
+                
+            <CardContent>
+                <Grid container spacing={2} >
+                    <Grid item xs={6} md={4}>
+                        <Card>
+                            <CardContent>
+                                <Main accept={true} title="Posty do akceptacji:" posts={allPost} />
+                            </CardContent>
+                           
+                        </Card>
+                    </Grid>
+                    <Grid item xs={6} md={4}>
+                        <Typography variant='h6'>Komentarze do akceptacji:</Typography>
+                    {comments.map((comment, index) => (
+                        <>
+                                <CommentsPost first_name={comment.userName} body={comment.body} />
+                                <Button>Akceptuj</Button>
+                        </> 
+                            ))}
+                    </Grid>
+
+                    <Grid item xs={6} md={1}>
+                        <Typography variant='h6'>Wybierz kolory: </Typography>
+                   
+                    </Grid>
+                    
+                </Grid>
+            </CardContent>
+        </Card>
+    );
+};
+

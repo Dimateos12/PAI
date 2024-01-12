@@ -13,5 +13,7 @@ namespace PAI.Data.Models
         public string? LastName { get; set; }
         public int? NormalId { get; set; }  
 
+        public bool IsAdmin { get; set; }
+
     }
 }
