@@ -7,4 +7,6 @@ public class Comment : InfoBaseEntity
     public bool IsActive { get; set; }
     public int PostId { get; set; }
     public int UserId { get; set; }
+
+    
 }

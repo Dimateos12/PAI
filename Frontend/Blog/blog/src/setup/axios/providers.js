@@ -69,6 +69,15 @@ export function GetFeaturedPost() {
 
     }
 
+    export function GetAllComents() {
+        return axiosAuth.get(ENDPOINTS.GetComment)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }
+
 
     export function GetPostById(id) {
         return axiosAuth.get(ENDPOINTS.GetPostById+id)

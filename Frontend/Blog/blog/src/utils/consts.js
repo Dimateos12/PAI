@@ -11,7 +11,8 @@ export const ENDPOINTS = {
    GetPosts: "Post",
    GetPostsById: "Post/",
    GetPostById: "Post/get/",
-   GetCommentByPostId: "Comment/getListByPost/"
+   GetCommentByPostId: "Comment/getListByPost/",
+   GetComment: "Comment"
 };
 
 export const PATHS = {

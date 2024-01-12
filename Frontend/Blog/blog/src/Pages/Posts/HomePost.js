@@ -54,7 +54,7 @@ export default function HomePost() {
                 </CardContent>
                </Card>
                {comments.map((comment, index) => (
-                    <CommentsPost body={comment.body} />
+                    <CommentsPost first_name={comment.userName} body={comment.body} />
                 ))}
                 <RichEditor/>
                </Grid>

@@ -12,7 +12,7 @@ export default function CommentsPost(props) {
               <Card style={{marginTop: "2%", maxWidth: "500px", minWidth: "500px"}}>
                 <CardContent>
                     Komentarz
-                    <CardHeader title="Autor: Nieznany"/>
+                    <CardHeader title={"A" + first_name? first_name : "Nieznany"}/>
                     <Typography variant='h6' color="GrayText"> {body} </Typography>
                 </CardContent>
               </Card>

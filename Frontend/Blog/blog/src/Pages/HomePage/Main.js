@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Markdown from './Markdown';
 import FeaturedPost from "./FeaturedPost";
+import { Button } from '@mui/material';
 
 function Main(props) {
-    const { posts, title, limit, postId } = props;
+    const { posts, title, limit, postId,accept } = props;
 
     return (
         <Grid
@@ -26,6 +27,7 @@ function Main(props) {
                 .map((post) => (
                     <div style={{ marginBottom: '5%', width: '180%' }}>
                     <FeaturedPost key={post.id} post={post} />
+                    {accept? <Button>Akceptuj</Button> : <></>}
                     </div>
              ))}
         </Grid>
