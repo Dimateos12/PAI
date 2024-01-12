@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PAI.Common.ModelsDTO;
 using PAI.Data.Models;
+using PAI.Repository.Interfaces;
 using PAI.Services.Interfaces;
 
 namespace PAI.Controllers;
@@ -10,11 +11,12 @@ namespace PAI.Controllers;
 public class PostController
 {
     private readonly IPostService _postService;
+    private readonly IGenericRepository<Post, int> _postRepository;
 
-
-    public PostController(IPostService postService)
+    public PostController(IPostService postService, IGenericRepository<Post, int> postRepository)
     {
         _postService = postService;
+        _postRepository = postRepository; 
     }
     
     [HttpPost]
@@ -47,5 +49,12 @@ public class PostController
     public async Task<Post> GetPostById(int id)
     {
         return await _postService.GetPostById(id);
+    }
+
+    [HttpGet]
+    [Route("toAccept")]
+    public  async Task<List<Post>> GetAcceptPost()
+    {
+        return await _postService.GetAcceptPost();
     }
 }

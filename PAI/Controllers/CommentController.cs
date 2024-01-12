@@ -42,14 +42,16 @@ public class CommentController
 
     [HttpGet]
     [Route("getListByPost/{id:int}")]
-    public async Task<ResponseDTO<List<Comment>>> GetByIdPost(int id)
-    {
-        var obj = _repository.GetAll().Where(x => x.PostId == id).ToList();
-        return new ResponseDTO<List<Comment>> { data = obj };
-
-
-
+    public async Task<ResponseDTO<List<CommentDTO>>> GetByIdPost(int id)
+    { 
+           return _commentService.GetListByIdPost(id);
     }
 
+    [HttpGet]
+    [Route("getCommentToAccept")]
+    public async Task<ResponseDTO<List<Comment>>> GetCommentToAccept()
+    {
+        return _commentService.GetCommentToAccept();
+    }
 
 }

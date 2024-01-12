@@ -10,5 +10,7 @@ public class MappingProfile : Profile
     {
         CreateMap<Image, ImageDTO>();
         CreateMap<ImageDTO,Image>();
+        CreateMap<Comment, CommentDTO>();
+        CreateMap<CommentDTO, Comment>();    
     }
 }

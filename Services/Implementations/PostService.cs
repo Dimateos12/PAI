@@ -31,4 +31,11 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
     {
         return await _postRepository.GetByIdAsync(id);
     }
+
+    public async Task<List<Post>> GetAcceptPost()
+    {
+        return await _postRepository.GetAll().Where(x => x.IsActive == false).ToListAsync();
+   
+    }
+
 }
