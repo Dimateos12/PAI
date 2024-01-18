@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Button, CardHeader, Grid } from '@mui/material';
-import { GetAllComents, GetAllPosts } from '../../setup/axios/providers';
+import { GetAllComents, GetAllPosts, GetCommentToAccept, GetPostToAccept } from '../../setup/axios/providers';
 import Main from '../HomePage/Main';
 import CommentsPost from '../Posts/CommentsPost';
 
@@ -25,15 +25,15 @@ export default function AdminPage() {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        GetAllPosts()
+        GetPostToAccept()
             .then((data) => {
-              setAllPost(data.data);
+              setAllPost(data);
               setLoading(false);
             })
             .catch((error) => {
                 console.error('Error in GetFeatured:', error);
             });
-            GetAllComents()
+            GetCommentToAccept()
             .then((data) => {
                 setComments(data.data);
             })
@@ -41,6 +41,9 @@ export default function AdminPage() {
 
     if(isLoading){
         return true;
+    }
+    function isActive(data){
+        return data === true;
     }
 
     console.log(comments);

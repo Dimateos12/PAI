@@ -14,14 +14,19 @@ import { useState } from "react";
 import { AddComment } from "../../setup/axios/providers";
 
 
-export default function RichEditor(){
+export default function RichEditor({postId}){
 
-  const [editorContent, setEditorContent] = useState([]);
+  const [editorContent, setEditorContent] = useState([""]);
   
   // to do handler click 
-  function handleClick(data){
-    // dodac id i zbudować json do wstawiania edycji  
-      AddComment(editorContent).then(
+  function handleClick(){
+    const dataSender = {
+      "body": editorContent,
+      "isActive": false,
+      "postId": postId,
+      "userId": 2
+    }  
+      AddComment(dataSender).then(
         response=>console.log(response)
       );
   }
@@ -52,7 +57,7 @@ const editor = useEditor({
         />
         </RichTextEditorProvider>
         <CardActionArea style={{marginTop: "2%"}}>
-            <Button variant="contained">Dodaj Komentarz</Button>
+            <Button variant="contained" onClick={handleClick} >Dodaj Komentarz</Button>
         </CardActionArea>
     </Card>
   );

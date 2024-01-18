@@ -38,4 +38,13 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
    
     }
 
+    public ResponseDTO<List<Post>> GetPostToAccept()
+    {
+        List<Post> obj = _postRepository.GetAll().Where(x => x.IsActive == false).ToList();
+
+        return new ResponseDTO<List<Post>>()
+        {
+            data = obj
+        };
+    }
 }

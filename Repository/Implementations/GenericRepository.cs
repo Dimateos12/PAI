@@ -106,9 +106,7 @@ namespace PAI.Repository.Implementations
         /// <exception cref="Exception"></exception>
         public async Task<T> UpdateAsync(T entity)
         {
-            var entry = _context.Entry<T>(entity);//_context.Set<T>().Update(entity);
-                //if (entry.State == EntityState.Detached)
-                //    throw new Exception("EntityState.Detached, data not updated.");
+            var entry = _context.Entry<T>(entity);               
             await SaveChangesAsync();
             return entry.Entity;
         }

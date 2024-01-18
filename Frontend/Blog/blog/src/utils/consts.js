@@ -11,7 +11,9 @@ export const ENDPOINTS = {
    GetPosts: "Post",
    GetPostsById: "Post/",
    GetPostById: "Post/get/",
+   GetPostToAccept: "Post/toAccept",
    GetCommentByPostId: "Comment/getListByPost/",
+   GetCommentToAccept: "Comment/getCommentToAccept",
    GetComment: "Comment",
    AddComment: "Comment"
 };

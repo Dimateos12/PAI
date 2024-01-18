@@ -22,7 +22,7 @@ public class CommentService : GenericService<Comment,int,Comment,int>, ICommentS
 
     public ResponseDTO<List<CommentDTO>> GetListByIdPost(int id)
     {
-        var obj = _commentRepository.GetAll().Where(x => x.PostId == id).ToList();
+        var obj = _commentRepository.GetAll().Where(x => x.PostId == id && x.IsActive == true).ToList();
         List<CommentDTO> respons = new List<CommentDTO>();
         List<User> users = _userManager.Users.ToList();
 

@@ -97,3 +97,21 @@ export function GetFeaturedPost() {
             throw error;
         });
     }
+
+    export function GetCommentToAccept() {
+        return axiosAuth.get(ENDPOINTS.GetCommentToAccept)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }
+
+    export function GetPostToAccept() {
+        return axiosAuth.get(ENDPOINTS.GetPostToAccept)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }

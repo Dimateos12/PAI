@@ -58,7 +58,7 @@ public class CommentController
     [Route("{id:int}")]
     public  Task<ResponseDTO<Comment>> Edit([FromBody] Comment model)
     {
-       return _commentService.Edit(model,model.Id);
+        return _commentService.Edit(model,model.Id);
     }
 
 

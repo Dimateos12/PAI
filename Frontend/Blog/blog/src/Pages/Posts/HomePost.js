@@ -56,7 +56,7 @@ export default function HomePost() {
                {comments.map((comment, index) => (
                     <CommentsPost first_name={comment.userName} body={comment.body} />
                 ))}
-                <RichEditor/>
+                <RichEditor postId={params.postId}/>
                </Grid>
                </>
     );

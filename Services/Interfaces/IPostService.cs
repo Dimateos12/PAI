@@ -9,4 +9,5 @@ public interface IPostService : IGenericService<Post, int, Post, int>
     public Task<Post> GetPostById(int id);
     public Task<List<Post>> GetAcceptPost();
 
+
 }
