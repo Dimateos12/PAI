@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import { Button } from '@mui/material';
 
 function Sidebar(props) {
     const { archives, description, social, title } = props;
@@ -18,13 +19,9 @@ function Sidebar(props) {
                 <Typography>{description}</Typography>
             </Paper>
             <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
-                Archives
+               <Button href='/category'>Wszystki kategorie</Button> 
             </Typography>
-            {archives.map((archive) => (
-                <Link display="block" variant="body1" href={archive.url} key={archive.title}>
-                    {archive.title}
-                </Link>
-            ))}
+            
             <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
                 Social
             </Typography>

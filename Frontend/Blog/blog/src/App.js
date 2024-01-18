@@ -8,6 +8,8 @@ import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 import ListPosts from './Pages/Posts/ListPosts';
 import HomePost from './Pages/Posts/HomePost';
 import AdminPage from './Pages/AdminPage/AdminPage';
+import Cateogry from './Pages/Category/Category';
+import AddPost from './Pages/Posts/AddPost';
     
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
                     <Route path="/section" element={<ListPosts/>} />
                     <Route path="/post/:postId" element={<HomePost/>} />
                     <Route path='/admin' element={<AdminPage/>} />
+                    <Route path='/category' element={<Cateogry/>} />
+                    <Route path='/addpost' element={<AddPost/>} />
                   </Route>
                </Routes>
                

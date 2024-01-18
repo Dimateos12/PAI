@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿    import * as React from 'react';
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import { jwtDecode } from "jwt-decode";

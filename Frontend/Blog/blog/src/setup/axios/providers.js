@@ -1,5 +1,6 @@
 ﻿import axiosAuth from "./authInstance";
 import {ENDPOINTS, LOCAL_STORAGE} from "../../utils/consts";
+import axios from "axios";
 
 export function login(data){
     axiosAuth.post(ENDPOINTS.login, data)
@@ -87,3 +88,12 @@ export function GetFeaturedPost() {
                 throw error;
             });
         }
+
+    export function AddComment(data){
+        return axiosAuth.post(ENDPOINTS.AddComment,data)
+        .then(response=> response.data)
+        .catch(error => {
+            console.error("error post comment", error);
+            throw error;
+        });
+    }

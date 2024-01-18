@@ -48,4 +48,8 @@ public class CommentService : GenericService<Comment,int,Comment,int>, ICommentS
             data = obj
         };
     }
+
+
+
+  
 }

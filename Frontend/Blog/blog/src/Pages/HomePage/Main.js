@@ -27,7 +27,7 @@ function Main(props) {
                 .map((post) => (
                     <div style={{ marginBottom: '5%', width: '180%' }}>
                     <FeaturedPost key={post.id} post={post} />
-                    {accept? <Button>Akceptuj</Button> : <></>}
+                    {accept? <><Button>Akceptuj</Button> <Button>Usuń</Button> </> : <></>}
                     </div>
              ))}
         </Grid>

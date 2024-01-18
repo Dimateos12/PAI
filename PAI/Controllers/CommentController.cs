@@ -53,5 +53,13 @@ public class CommentController
     {
         return _commentService.GetCommentToAccept();
     }
+    
+    [HttpPut]
+    [Route("{id:int}")]
+    public  Task<ResponseDTO<Comment>> Edit([FromBody] Comment model)
+    {
+       return _commentService.Edit(model,model.Id);
+    }
+
 
 }

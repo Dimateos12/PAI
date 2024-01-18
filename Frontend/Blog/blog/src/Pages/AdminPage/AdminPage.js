@@ -65,6 +65,7 @@ export default function AdminPage() {
                         <>
                                 <CommentsPost first_name={comment.userName} body={comment.body} />
                                 <Button>Akceptuj</Button>
+                                <Button>Usun</Button>
                         </> 
                             ))}
                     </Grid>

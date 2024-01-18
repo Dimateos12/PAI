@@ -13,7 +13,7 @@ namespace PAI.Repository.Interfaces
         IQueryable<T> Find(Expression<Func<T, bool>> expression);
         Task<T> AddAsync(T entity);
         Task<T> GetByIdAsync(TKey id);
-
-
+        T GetById(TKey id);
+        Task<T> UpdateAsync(T entity);
     }
 }

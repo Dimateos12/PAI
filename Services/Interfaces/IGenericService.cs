@@ -7,5 +7,9 @@ namespace PAI.Services.Interfaces
     {
         Task<ResponseDTO<TDTO>> Add<TDTO>(TDTO model);
         Task<ResponseDTO<List<TEntity>>> GetList();
+
+        Task<ResponseDTO<TDTO>> Edit<TDTO>(TDTO model, TKey id);
+
+
     }
 }

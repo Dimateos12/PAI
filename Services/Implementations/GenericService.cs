@@ -55,5 +55,18 @@ public abstract class GenericService<TEntity, TKey, TViewEntity, TViewKey> : IGe
         };
     }
 
+    public async Task<ResponseDTO<TDTO>> Edit<TDTO>(TDTO model, TKey id)
+    {
+        var dbObjt = _repository.GetById(id);
+        dbObjt = _mapper.Map(model, dbObjt);
+
+        var ent = await _repository.UpdateAsync(dbObjt);
+
+        return new ResponseDTO<TDTO>
+        {
+            data = _mapper.Map<TDTO>(ent)
+        };
+    }
+
 
 }
