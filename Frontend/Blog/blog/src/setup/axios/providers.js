@@ -115,3 +115,12 @@ export function GetFeaturedPost() {
                 throw error;
             });
     }
+
+    export function EditComment(data, id){
+        return axiosAuth.put(ENDPOINTS.EditComment+id,data)
+        .then(response=> response.data)
+        .catch(error => {
+            console.error("error post comment", error);
+            throw error;
+        });
+    }

@@ -10,6 +10,7 @@ import HomePost from './Pages/Posts/HomePost';
 import AdminPage from './Pages/AdminPage/AdminPage';
 import Cateogry from './Pages/Category/Category';
 import AddPost from './Pages/Posts/AddPost';
+import Checkout from './Pages/BuyPage/Checkout';
     
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
                     <Route path='/admin' element={<AdminPage/>} />
                     <Route path='/category' element={<Cateogry/>} />
                     <Route path='/addpost' element={<AddPost/>} />
+                    <Route path='/checkout' element={<Checkout/>} />
+
                   </Route>
                </Routes>
                

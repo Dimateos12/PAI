@@ -64,8 +64,14 @@ function Header(props) {
                     </>
                 }
 
-               
-                
+                <Button
+                href="/checkout"
+                variant="outlined"
+                size="small"
+                style={{ color: 'gold', borderColor: 'gold', '&:hover': { backgroundColor: 'gold', color: 'black' } }}
+                >
+                Kup premium
+                </Button>                
                 
             </Toolbar>
             <Toolbar

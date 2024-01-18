@@ -47,4 +47,6 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
             data = obj
         };
     }
+
+   
 }

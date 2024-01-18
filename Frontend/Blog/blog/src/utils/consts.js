@@ -15,7 +15,8 @@ export const ENDPOINTS = {
    GetCommentByPostId: "Comment/getListByPost/",
    GetCommentToAccept: "Comment/getCommentToAccept",
    GetComment: "Comment",
-   AddComment: "Comment"
+   AddComment: "Comment",
+   EditComment: "Comment/"
 };
 
 export const PATHS = {

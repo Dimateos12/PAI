@@ -35,7 +35,6 @@ export default function HomePost() {
             });
     }, []);
 
-    console.log(comments);
 
     return (
                <>

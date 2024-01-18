@@ -6,10 +6,11 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Button, CardHeader, Grid } from '@mui/material';
-import { GetAllComents, GetAllPosts, GetCommentToAccept, GetPostToAccept } from '../../setup/axios/providers';
+import { EditComment, GetAllComents, GetAllPosts, GetCommentToAccept, GetPostToAccept } from '../../setup/axios/providers';
 import Main from '../HomePage/Main';
 import CommentsPost from '../Posts/CommentsPost';
-
+import ColorPickerComponent from '../../setup/axios/ColorPickerComponent';
+import { ColorPicker } from 'material-ui-color';
 
 
 export default function AdminPage() {
@@ -46,7 +47,12 @@ export default function AdminPage() {
         return data === true;
     }
 
-    console.log(comments);
+    function handleClick(comment){
+       comment.isActive = true;
+       console.log(comment);
+       EditComment(comment,comment.id).then();
+    }
+
 
     return (
         <Card>
@@ -67,7 +73,7 @@ export default function AdminPage() {
                     {comments.map((comment, index) => (
                         <>
                                 <CommentsPost first_name={comment.userName} body={comment.body} />
-                                <Button>Akceptuj</Button>
+                                <Button onClick={() => handleClick(comment)}>Akceptuj</Button>
                                 <Button>Usun</Button>
                         </> 
                             ))}
@@ -75,7 +81,9 @@ export default function AdminPage() {
 
                     <Grid item xs={6} md={1}>
                         <Typography variant='h6'>Wybierz kolory: </Typography>
-                   
+                        <ColorPickerComponent tekst={"Kafelki komentarzy "}/>
+                        <ColorPickerComponent tekst={"Kafelki postów"}/>
+                        <ColorPickerComponent tekst={"Kolor tekstów"}/>
                     </Grid>
                     
                 </Grid>

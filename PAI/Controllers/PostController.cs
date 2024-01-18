@@ -57,4 +57,11 @@ public class PostController
     {
         return await _postService.GetAcceptPost();
     }
+
+    [HttpPut]
+    [Route("{id:int}")]
+    public  Task<ResponseDTO<Post>> EditPost([FromBody] Post model)
+    {
+        return  _postService.Edit(model, model.Id);
+    }
 }

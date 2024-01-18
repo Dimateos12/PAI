@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
+import mapujSlowo from '../dicitonaryHeader';
 
 function BreadcrumbsHeader() {
   const location = useLocation();
@@ -18,7 +19,7 @@ function BreadcrumbsHeader() {
             underline="hover"
             color="inherit"
       >
-            strona głowna
+            Strona głowna
           </Link>
         {pathSegments.map((segment, index) => (
           <Link
@@ -27,7 +28,7 @@ function BreadcrumbsHeader() {
             color="inherit"
             href={`/${pathSegments.slice(0, index + 1).join('/')}`}
           >
-            {segment}
+            { mapujSlowo(segment)}
           </Link>
         ))}
       </Breadcrumbs>
