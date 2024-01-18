@@ -78,6 +78,8 @@ builder.Services.AddTransient(typeof(IGenericRepository<,>),typeof(GenericReposi
 builder.Services.AddTransient<ISectionService, SectionService>();
 builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddTransient<IPostService, PostService>();
+builder.Services.AddTransient<IAdminConfService, AdminConfService>();
+
 #endregion
 
 var app = builder.Build();
