@@ -82,8 +82,7 @@ export default function AdminPage() {
                     <Grid item xs={6} md={1}>
                         <Typography variant='h6'>Wybierz kolory: </Typography>
                         <ColorPickerComponent tekst={"Kafelki komentarzy "}/>
-                        <ColorPickerComponent tekst={"Kafelki postów"}/>
-                        <ColorPickerComponent tekst={"Kolor tekstów"}/>
+                        
                     </Grid>
                     
                 </Grid>

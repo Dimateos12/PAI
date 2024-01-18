@@ -16,6 +16,8 @@ namespace PAI.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Sections> Sections { get; set; }
+
+        public DbSet<AdminConf> AdminConfs { get; set; }    
         public PAIDbContext(DbContextOptions<PAIDbContext> options) : base(options)
         {
             

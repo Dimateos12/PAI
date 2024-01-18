@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PAI.Data;
@@ -11,9 +12,11 @@ using PAI.Data;
 namespace PAI.Data.Migrations
 {
     [DbContext(typeof(PAIDbContext))]
-    partial class PAIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240118191023_Add Admin configuration model")]
+    partial class AddAdminconfigurationmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,31 +155,6 @@ namespace PAI.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("PAI.Data.Models.AdminConf", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CommentColor")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PostColor")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("TextColor")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdminConfs");
                 });
 
             modelBuilder.Entity("PAI.Data.Models.Comment", b =>
