@@ -2,9 +2,9 @@ import { Box, Button, Input, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const ColorPickerComponent = ({ colorName }) => {
-  const [color1, setColor1] = useState('#000000');
-  const [color2, setColor2] = useState('#000000');
-  const [color3, setColor3] = useState('#000000');
+  const [color1, setColor1] = useState(localStorage.getItem("CommentColor"));
+  const [color2, setColor2] = useState(localStorage.getItem("PostColor"));
+  const [color3, setColor3] = useState(localStorage.getItem("TextColor"));
 
   const handleColorChange = (colorNumber, event) => {
     switch (colorNumber) {

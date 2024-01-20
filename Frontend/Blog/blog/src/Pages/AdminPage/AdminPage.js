@@ -49,8 +49,8 @@ export default function AdminPage() {
 
     function handleClick(comment){
        comment.isActive = true;
-       console.log(comment);
-       EditComment(comment,comment.id).then();
+       
+       EditComment(comment,comment.id).then(window.location.reload());
     }
 
 
@@ -88,6 +88,6 @@ export default function AdminPage() {
                 </Grid>
             </CardContent>
         </Card>
-    );
+    );  
 };
 
