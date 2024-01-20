@@ -48,5 +48,15 @@ public class PostService : GenericService<Post, int, Post, int>, IPostService
         };
     }
 
-   
+    public  ResponseDTO<List<Post>> GetPostByUser(int id)
+    {
+        List<Post> obj =  _postRepository.GetAll().Where(x => x.UserId == id).ToList();
+
+        return new ResponseDTO<List<Post>>()
+        {
+            data = obj
+        };
+    }
+
+
 }

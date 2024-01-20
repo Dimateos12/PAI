@@ -63,4 +63,12 @@ public class CommentController
     }
 
 
+    [HttpGet]
+    [Route("getByUserId/{id:int}")]
+    public  ResponseDTO<List<Comment>> GetByUserId(int id)
+    {
+        return  _commentService.GetCommentByUserId(id);
+
+    }
+
 }

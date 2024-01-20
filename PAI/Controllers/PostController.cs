@@ -64,4 +64,11 @@ public class PostController
     {
         return  _postService.Edit(model, model.Id);
     }
+
+    [HttpGet]
+    [Route("getByUser/{id:int}")]
+    public ResponseDTO<List<Post>> GetPostByUser(int id)
+    {
+        return _postService.GetPostByUser(id);
+    }
 }

@@ -49,7 +49,17 @@ public class CommentService : GenericService<Comment,int,Comment,int>, ICommentS
         };
     }
 
+    public ResponseDTO<List<Comment>> GetCommentByUserId(int id)
+    {
+        List<Comment> obj = _commentRepository.GetAll().Where(x => x.UserId == id).ToList();
+
+        return new ResponseDTO<List<Comment>>()
+        {
+            data = obj
+        };
+    }
 
 
-  
+
+
 }

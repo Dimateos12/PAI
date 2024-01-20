@@ -11,6 +11,7 @@ const RedirectButtonPayu = ({data}) => {
         .then((response) => {
             console.log(response.data.requestMessage.requestUri);
             window.open(response.data.requestMessage.requestUri, '_blank');
+            window.location.href = '/';
         })  
         .catch((error) => {
             alert(error);
