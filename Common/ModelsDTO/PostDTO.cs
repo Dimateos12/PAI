@@ -14,7 +14,7 @@ namespace PAI.Common.ModelsDTO
     public string Body { get; set; }
     public int Category { get; set; }
     public bool IsActive { get; set; }
-    public string UserName { get; set; } 
+    public string? UserName { get; set; } 
     public string Image { get; set; }
     public bool IsFeatured { get; set; } 
 }

@@ -9,11 +9,12 @@ import CardMedia from '@mui/material/CardMedia';
 
 function FeaturedPost(props) {
     const { post } = props;
+    const color = localStorage.getItem("PostColor");
     return (
         <Grid item xs={12} md={6}>
             <CardActionArea component="a" href={"/post/"+post.id}>
                 <Card key={post.id} 
-                      sx={{ display: 'flex',  backgroundColor:  '#E7E4E3 '  }}>
+                      sx={{ display: 'flex',  backgroundColor:  color }}>
                     <CardContent sx={{ flex: 1 }}>
                         <Typography component="h2" variant="h5">
                             {post.title}

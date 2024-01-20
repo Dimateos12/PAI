@@ -27,8 +27,9 @@ export default function RichEditor({postId}){
       "userId": 2
     }  
       AddComment(dataSender).then(
-        response=>console.log(response)
+      
       );
+      window.location.reload(); 
   }
 
 const editor = useEditor({
