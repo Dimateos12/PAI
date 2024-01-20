@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardHeader, Grid } from '@mui/material';
-import { GetAllPosts } from '../../setup/axios/providers';
+import { GetAllPosts, GetPostById, GetPostByUserId } from '../../setup/axios/providers';
 import Main from '../HomePage/Main';
 import UserInformation from './UserInformation';
 
@@ -14,17 +14,17 @@ import UserInformation from './UserInformation';
 
 export default function ProfilePage() {
     const [token, setToken] = useState(null);
+    const [id,setId] = useState(null);
+   
 
-    useEffect(() => {
-        const storedToken = localStorage.getItem('token'); 
+    
 
-        setToken(jwtDecode(storedToken));
-    }, []);
     const [allPost, setAllPost] = useState([]);
     const [isLoading,setLoading] = useState(true);
 
     useEffect(() => {
-        GetAllPosts()
+        
+            GetPostByUserId(2)
             .then((data) => {
               setAllPost(data.data);
               setLoading(false);
@@ -32,6 +32,8 @@ export default function ProfilePage() {
             .catch((error) => {
                 console.error('Error in GetFeatured:', error);
             });
+            
+        
     }, []);
 
     if(isLoading){

@@ -132,3 +132,22 @@ export function GetFeaturedPost() {
                 throw error;
             });
     }
+
+    export function GetPostByUserId(id) {
+        return axiosAuth.get(ENDPOINTS.GetPostByUserId+id)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }
+
+    
+    export function GetCommentByUserId(id) {
+        return axiosAuth.get(ENDPOINTS.GetCommentByUserId+id)
+            .then(response => response.data)
+            .catch(error => {
+                console.error('Error fetching section:', error);
+                throw error;
+            });
+    }

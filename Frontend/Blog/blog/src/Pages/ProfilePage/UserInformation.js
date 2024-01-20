@@ -5,19 +5,24 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions, CardHeader, Grid, Switch, TextField } from '@mui/material';
-import { GetAllPosts } from '../../setup/axios/providers';
+import { GetAllPosts, GetCommentByUserId } from '../../setup/axios/providers';
 import Main from '../HomePage/Main';
 import UserComments from './UserComments';
 import { jwtDecode } from 'jwt-decode';
 
 export default function UserInformation() {
     const [isSwitchOn, setIsSwitchOn] = useState(false); // Początkowy stan dla przycisku Switch
-   
+    const [comments, setComments] = useState([]);
     const [localStorageInfo,setLocalStorageInfo] = React.useState([]);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token'); 
         setLocalStorageInfo(jwtDecode(storedToken));
+        GetCommentByUserId(2).then((response) => {
+            console.log(response);
+            setComments(response.data);
+        }
+        );
     }, []);
     
     const handleSwitchChange = () => {
@@ -73,7 +78,10 @@ export default function UserInformation() {
                 <Button variant="contained" disabled={!isSwitchOn} style={{ marginTop: '2%' }}>Aktualizuj Dane</Button>
             </CardContent>
         </Card>
-        <UserComments/>
+        <Typography variant='h5'>Twoje Komentarze</Typography>
+        {comments.map((comment,index) => (
+                     <UserComments key={index} postId={comment.postId} title={localStorageInfo.given_name} body={comment.body}/>
+             ))}
         </>
     );
 };
