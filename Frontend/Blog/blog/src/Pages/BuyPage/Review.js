@@ -9,7 +9,7 @@ const products = [
   {
     name: 'Konto premium',
     desc: 'Konto premium na Forum Dyskusyjnym',
-    price: '$49.99',
+    price: '210 zł',
   },
  
   { name: 'Dostawa', desc: 'Produkt elektroniczny', price: 'Darmowa' },
@@ -39,7 +39,7 @@ export default function Review() {
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Suma" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-          $49.99
+          210 zł 
           </Typography>
         </ListItem>
       </List>

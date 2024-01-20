@@ -14,21 +14,10 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import RedirectButtonPayu from '../../setup/axios/redirectPayUButton';
 
-const steps = ['Adres', 'Szczegóły płatności', 'Potwierdz dane'];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error('Unknown step');
-  }
-}
+
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -39,6 +28,35 @@ export default function Checkout() {
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+  };
+  
+  const steps = ['Adres',  'Potwierdz dane'];
+
+
+  function getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <AddressForm formData={formData} onFormChange={handleFormChange} />;
+      case 1:
+        return <Review />;
+      default:
+        throw new Error('Unknown step');
+    }
+  }
+
+  const [formData, setFormData] = React.useState({
+    firstName: '',
+    lastName: '',
+    address1: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+    mail: '',
+  });
+
+  const handleFormChange = (newFormData) => {
+    setFormData(newFormData);
   };
 
   return (
@@ -74,14 +92,18 @@ export default function Checkout() {
                     Powrót
                   </Button>
                 )}
-
-                <Button
+              {activeStep === steps.length - 1 ? <>
+               <RedirectButtonPayu data={formData}/>
+                </> : 
+              <> 
+              <Button
                   variant="contained"
                   onClick={handleNext}
                   sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? 'Płace' : 'Dalej'}
-                </Button>
+                  Dalej
+                </Button></>}
+               
               </Box>
             </React.Fragment>
           )}
