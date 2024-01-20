@@ -36,7 +36,7 @@ const editor = useEditor({
     extensions: [StarterKit],
     content: "<p>Dodaj komentarz...</p>",
     onUpdate({editor}) {
-      setEditorContent(editor.getHTML());
+      setEditorContent(editor.getText());
     }
   });
 
