@@ -98,18 +98,17 @@ namespace PAI.Repository.Implementations
 
         }
 
-        /// <summary>
-        /// Aktualizowanie podanego rekordu 
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
         public async Task<T> UpdateAsync(T entity)
         {
             var entry = _context.Entry<T>(entity);
-            await _context.SaveChangesAsync();
+            _context.Set<T>().Update(entity);
+            if (entry.State == EntityState.Detached)
+                throw new Exception("EntityState.Detached, data not updated.");
+            await SaveChangesAsync();
             return entry.Entity;
         }
+
+
 
         public T GetById(TKey id)
         {
@@ -126,24 +125,24 @@ namespace PAI.Repository.Implementations
         /// <returns></returns>
         public async Task<int> SaveChangesAsync()
         {
-            //foreach (var entity in _context.ChangeTracker
-            //    .Entries()
-            //    .Where(x => x.Entity is InfoBaseEntity && x.State == EntityState.Modified)
-            //    .Select(x => x.Entity)
-            //    .Cast<InfoBaseEntity>())
-            //{
-            //    entity.UpdatedUserId = null;
-            //}
+            foreach (var entity in _context.ChangeTracker
+                .Entries()
+                .Where(x => x.Entity is InfoBaseEntity && x.State == EntityState.Modified)
+                .Select(x => x.Entity)
+                .Cast<InfoBaseEntity>())
+            {
 
-            //foreach (var entity in _context.ChangeTracker
-            //    .Entries()
-            //    .Where(x => x.Entity is InfoBaseEntity && x.State == EntityState.Added)
-            //    .Select(x => x.Entity)
-            //    .Cast<InfoBaseEntity>())
-            //{
-            //    entity.CreatedDate = DateTime.Now;
-            //    entity.CreatedUserId = null;
-            //}
+            }
+
+            foreach (var entity in _context.ChangeTracker
+                .Entries()
+                .Where(x => x.Entity is InfoBaseEntity && x.State == EntityState.Added)
+                .Select(x => x.Entity)
+                .Cast<InfoBaseEntity>())
+            {
+                entity.CreatedDate = DateTime.Now;
+
+            }
 
             return await _context.SaveChangesAsync();
         }

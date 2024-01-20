@@ -54,11 +54,12 @@ public class CommentController
         return _commentService.GetCommentToAccept();
     }
     
-    [HttpPut]
+    [HttpPatch]
     [Route("{id:int}")]
-    public  Task<ResponseDTO<Comment>> Edit([FromBody] Comment model)
+    public  async Task<ResponseDTO<CommentDTO>> Edit([FromBody] CommentDTO model, int id)
     {
-        return _commentService.Edit(model,model.Id);
+        return await _commentService.Edit(model,id);
+
     }
 
 

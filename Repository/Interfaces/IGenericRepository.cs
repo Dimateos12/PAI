@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,6 +15,8 @@ namespace PAI.Repository.Interfaces
         Task<T> AddAsync(T entity);
         Task<T> GetByIdAsync(TKey id);
         T GetById(TKey id);
+
         Task<T> UpdateAsync(T entity);
+
     }
 }

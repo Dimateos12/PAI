@@ -11,5 +11,6 @@ namespace PAI.Services.Interfaces
         Task<ResponseDTO<TDTO>> Edit<TDTO>(TDTO model, TKey id);
 
 
+
     }
 }

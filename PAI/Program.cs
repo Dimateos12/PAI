@@ -92,12 +92,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(app.Environment.ContentRootPath, "wwwroot", "GalleryImages")),
-    RequestPath = "/GalleryImages"
-});
 
 app.UseCors("myPolicy");
 app.UseAuthentication();

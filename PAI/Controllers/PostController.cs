@@ -60,7 +60,7 @@ public class PostController
 
     [HttpPut]
     [Route("{id:int}")]
-    public  Task<ResponseDTO<Post>> EditPost([FromBody] Post model)
+    public  Task<ResponseDTO<PostDTO>> EditPost([FromBody] PostDTO model)
     {
         return  _postService.Edit(model, model.Id);
     }
