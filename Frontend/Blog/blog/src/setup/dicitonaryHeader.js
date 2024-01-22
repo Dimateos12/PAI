@@ -3,6 +3,7 @@ export default function mapujSlowo(slowo) {
         'admin': 'Panel Administratora',
         'profile': 'Panel użytkownika',
         'section': 'Posty',
+        'addpost': 'Dodawanie postu',
         'post': 'Post',
         '1': 'Post nr 1',
         '2': 'Post nr 2',

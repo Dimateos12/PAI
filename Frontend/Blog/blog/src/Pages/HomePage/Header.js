@@ -23,7 +23,6 @@ function Header(props) {
        
     }, []);
 
-    console.log(localStorageInfo.typ);
 
     return (
         <React.Fragment>

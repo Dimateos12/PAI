@@ -151,3 +151,12 @@ export function GetFeaturedPost() {
                 throw error;
             });
     }
+
+    export function AddPostSender(data){
+        return axiosAuth.post(ENDPOINTS.AddPost,data)
+        .then(response=> response.data)
+        .catch(error => {
+            console.error("error post comment", error);
+            throw error;
+        });
+    }

@@ -20,7 +20,8 @@ export const ENDPOINTS = {
    EditPost: "Post/",
    PayU: "Admin/PayU",
    GetPostByUserId: "Post/getByUser/",
-   GetCommentByUserId: "Comment/getByUserId/"
+   GetCommentByUserId: "Comment/getByUserId/",
+   AddPost: "Post"
 };
 
 export const PATHS = {

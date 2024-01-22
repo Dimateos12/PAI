@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardHeader, Grid } from '@mui/material';
+import { Button, CardHeader, Grid } from '@mui/material';
 import { GetAllPosts, GetPostById, GetPostByUserId } from '../../setup/axios/providers';
 import Main from '../HomePage/Main';
 import UserInformation from './UserInformation';
@@ -49,6 +49,7 @@ export default function ProfilePage() {
                     <Grid item xs={6} md={5}>
                         <Card>
                             <CardContent>
+                                <Button href='/addpost' variant='contained'> + Dodaj post</Button>
                                 <Main title="Twoje posty" posts={allPost} />
                             </CardContent>
                         </Card>
