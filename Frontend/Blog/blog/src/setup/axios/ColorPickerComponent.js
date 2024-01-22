@@ -23,7 +23,10 @@ const ColorPickerComponent = ({ colorName }) => {
   };
 
   const handleApplyColors = () => {
-    console.log('Selected Colors:', color1, color2, color3);
+    localStorage.setItem("CommentColor", color1);
+    localStorage.setItem("PostColor", color2);
+    localStorage.setItem("TextColor", color3);
+    window.location.reload();
   };
 
   return (
